@@ -20,6 +20,37 @@ cp .env.example .env
 
 Use real domain, sender, and inbox values only in environment variables. Do not commit `.env`.
 
+## Docker Deployment
+
+Build the image from the project root:
+
+```bash
+docker build -t app-service .
+```
+
+Run the container with environment variables from `.env`:
+
+```bash
+docker run -d --name app-service --env-file .env -p 8080:8080 app-service
+```
+
+For updates, pull the latest code, rebuild the image, and replace the running container:
+
+```bash
+git pull origin main
+docker build -t app-service .
+docker stop app-service
+docker rm app-service
+docker run -d --name app-service --env-file .env -p 8080:8080 app-service
+```
+
+Verify the service:
+
+```bash
+docker logs app-service --tail 50
+curl http://localhost:8080
+```
+
 ## Stack
 
 - React + Vite
