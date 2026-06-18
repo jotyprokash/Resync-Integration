@@ -3,13 +3,16 @@
 <p>
   <img alt="React" src="https://img.shields.io/badge/React-20232a?style=flat&logo=react&logoColor=61dafb" />
   <img alt="Vite" src="https://img.shields.io/badge/Vite-646cff?style=flat&logo=vite&logoColor=ffffff" />
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=ffffff" />
   <img alt="Express" src="https://img.shields.io/badge/Express-111111?style=flat&logo=express&logoColor=ffffff" />
   <img alt="Supabase" src="https://img.shields.io/badge/Supabase-3ecf8e?style=flat&logo=supabase&logoColor=ffffff" />
   <img alt="Resend" src="https://img.shields.io/badge/Resend-000000?style=flat&logo=resend&logoColor=ffffff" />
   <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ed?style=flat&logo=docker&logoColor=ffffff" />
+  <img alt="Nginx" src="https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=ffffff" />
+  <img alt="AWS" src="https://img.shields.io/badge/AWS-232f3e?style=flat&logo=amazonaws&logoColor=ffffff" />
 </p>
 
-Subscription form integration for database capture, visitor confirmation emails, admin notifications, and containerized runtime deployment. The application stores submitted email addresses in Supabase and sends transactional email through Resend, while mailbox hosting can remain on a separate provider.
+A deployment-ready subscription workflow that captures visitor emails, stores them in Supabase, sends confirmation and admin notification emails through Resend, and runs as a containerized service behind a reverse proxy.
 
 ## Architecture
 
