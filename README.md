@@ -1,48 +1,47 @@
-<p align="center">
-  <img src="https://dummyimage.com/1200x360/0a0a0f/c8a96e.png&text=RESYNC+INTEGRATION" alt="Resync Integration banner" width="100%" />
-</p>
-
 # Resync Integration
 
-Subscription form integration with database capture, email notifications, and deployment-ready server handling.
+<p>
+  <img alt="React" src="https://img.shields.io/badge/React-20232a?style=flat&logo=react&logoColor=61dafb" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-646cff?style=flat&logo=vite&logoColor=ffffff" />
+  <img alt="Express" src="https://img.shields.io/badge/Express-111111?style=flat&logo=express&logoColor=ffffff" />
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-3ecf8e?style=flat&logo=supabase&logoColor=ffffff" />
+  <img alt="Resend" src="https://img.shields.io/badge/Resend-000000?style=flat&logo=resend&logoColor=ffffff" />
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ed?style=flat&logo=docker&logoColor=ffffff" />
+</p>
 
-## Overview
-
-The app captures visitor email submissions, stores them in Supabase, and sends confirmation plus admin notification emails through Resend. Mailbox hosting can stay on a separate provider such as Zoho, while transactional sending is handled by Resend.
+Subscription form integration for database capture, visitor confirmation emails, admin notifications, and containerized runtime deployment. The application stores submitted email addresses in Supabase and sends transactional email through Resend, while mailbox hosting can remain on a separate provider.
 
 ## Architecture
-
-The runtime is intentionally small: the public form posts to the application API, the API persists the subscription record, and transactional email is sent through the configured provider. DNS, sender identity, and mailbox routing stay outside the application runtime.
 
 <p align="center">
   <img src="docs/architecture.svg" alt="Subscription integration architecture" width="100%" />
 </p>
 
-## Configuration
+## Runtime Setup
 
-Copy `.env.example` to `.env` for local development and set the same values in your deployment environment.
+Create the local environment file from the example template:
 
 ```bash
 cp .env.example .env
 ```
 
-Use real domain, sender, and inbox values only in environment variables. Do not commit `.env`.
+Set production values only through environment variables or the deployment host. Keep `.env` and service credentials out of version control.
 
-## Docker Deployment
+## Docker Operations
 
-Build the image from the project root:
+Build the application image:
 
 ```bash
 docker build -t app-service .
 ```
 
-Run the container with environment variables from `.env`:
+Run the service with the configured environment:
 
 ```bash
 docker run -d --name app-service --env-file .env -p 8080:8080 app-service
 ```
 
-For updates, pull the latest code, rebuild the image, and replace the running container:
+Deploy an update:
 
 ```bash
 git pull origin main
@@ -52,7 +51,7 @@ docker rm app-service
 docker run -d --name app-service --env-file .env -p 8080:8080 app-service
 ```
 
-Verify the service:
+Check the running service:
 
 ```bash
 docker logs app-service --tail 50
@@ -62,6 +61,7 @@ curl http://localhost:8080
 ## Stack
 
 - React + Vite
+- Express
 - Supabase
 - Resend
-- Vercel / Express Docker runtime
+- Docker
