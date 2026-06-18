@@ -10,6 +10,14 @@ Subscription form integration with database capture, email notifications, and de
 
 The app captures visitor email submissions, stores them in Supabase, and sends confirmation plus admin notification emails through Resend. Mailbox hosting can stay on a separate provider such as Zoho, while transactional sending is handled by Resend.
 
+## Architecture
+
+The runtime is intentionally small: the public form posts to the application API, the API persists the subscription record, and transactional email is sent through the configured provider. DNS, sender identity, and mailbox routing stay outside the application runtime.
+
+<p align="center">
+  <img src="docs/architecture.svg" alt="Subscription integration architecture" width="100%" />
+</p>
+
 ## Configuration
 
 Copy `.env.example` to `.env` for local development and set the same values in your deployment environment.
