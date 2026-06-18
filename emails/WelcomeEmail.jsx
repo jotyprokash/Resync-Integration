@@ -22,40 +22,39 @@ export function WelcomeEmail({
   return (
     <Html>
       <Head />
-      <Preview>You're on the list — we'll let you know the moment we launch 🎉</Preview>
+      <Preview>Your waitlist request has been received.</Preview>
       <Body style={s.body}>
         <Container style={s.container}>
 
           {/* ── Dark header with logo ── */}
           <Section style={s.header}>
-            <Text style={s.logo}>✦ {siteName}</Text>
+            <Text style={s.logo}>{siteName}</Text>
           </Section>
 
           {/* ── Hero ── */}
           <Section style={s.hero}>
-            <Heading style={s.heading}>You're on the list.</Heading>
+            <Heading style={s.heading}>You're on the waitlist.</Heading>
             <Text style={s.heroSub}>
-              Something big is coming — and you'll be the first to know.
+              We received your request and will let you know when access is available.
             </Text>
           </Section>
 
           {/* ── Body copy ── */}
           <Section style={s.bodySection}>
-            <Text style={s.bodyText}>Hi there,</Text>
+            <Text style={s.bodyText}>Hello,</Text>
             <Text style={s.bodyText}>
-              Thank you for subscribing! We're putting the final touches on our
-              store and we can't wait to share it with you.
+              Thanks for joining the {siteName} waitlist.
             </Text>
             <Text style={s.bodyText}>
-              When we launch, you'll be among the very first to get access —
-              along with any exclusive early-bird offers we have lined up.
+              No action is needed from you right now. We'll send the next update
+              to this email address.
             </Text>
           </Section>
 
           {/* ── CTA ── */}
           <Section style={s.ctaSection}>
             <Button style={s.button} href={siteUrl}>
-              Visit Our Website
+              Visit website
             </Button>
           </Section>
 
@@ -65,7 +64,7 @@ export function WelcomeEmail({
           <Section style={s.footer}>
             <Text style={s.footerText}>© 2026 {siteName}. All rights reserved.</Text>
             <Text style={s.footerText}>
-              You received this because you signed up at {siteUrl}
+              You received this email because you joined the waitlist at {siteUrl}.
             </Text>
             <Text style={s.footerText}>
               <a href={`${siteUrl}/unsubscribe`} style={s.link}>
@@ -84,7 +83,7 @@ export function WelcomeEmail({
 
 const s = {
   body: {
-    backgroundColor: '#f4f1eb',
+    backgroundColor: '#f6f4ef',
     fontFamily: "'DM Sans', Arial, sans-serif",
     margin: 0,
     padding: '40px 0',
@@ -93,47 +92,42 @@ const s = {
     backgroundColor: '#ffffff',
     maxWidth: '560px',
     margin: '0 auto',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    border: '1px solid #e5dfd5',
+    border: '1px solid #e7e1d8',
   },
   header: {
-    backgroundColor: '#0a0a0f',
     padding: '24px 40px',
-    textAlign: 'center',
+    borderBottom: '1px solid #eee8df',
   },
   logo: {
-    color: '#c8a96e',
-    fontSize: '13px',
+    color: '#111111',
+    fontSize: '14px',
     fontWeight: '700',
-    letterSpacing: '0.2em',
+    letterSpacing: '0.16em',
     margin: 0,
+    textTransform: 'uppercase',
   },
   hero: {
-    backgroundColor: '#0a0a0f',
-    padding: '36px 40px 32px',
-    textAlign: 'center',
+    padding: '36px 40px 10px',
   },
   heading: {
-    color: '#f5f0e8',
-    fontSize: '40px',
+    color: '#111111',
+    fontSize: '28px',
     fontFamily: 'Georgia, serif',
     fontWeight: '700',
-    margin: '0 0 10px',
-    lineHeight: '1.1',
+    margin: '0 0 14px',
+    lineHeight: '1.2',
   },
   heroSub: {
-    color: 'rgba(245,240,232,0.55)',
+    color: '#4d4944',
     fontSize: '15px',
-    fontWeight: '300',
+    lineHeight: '1.7',
     margin: 0,
-    letterSpacing: '0.03em',
   },
   bodySection: {
-    padding: '32px 40px 8px',
+    padding: '14px 40px 8px',
   },
   bodyText: {
-    color: '#3a3530',
+    color: '#4d4944',
     fontSize: '15px',
     lineHeight: '1.7',
     margin: '0 0 14px',
@@ -143,19 +137,18 @@ const s = {
     textAlign: 'center',
   },
   button: {
-    backgroundColor: '#c8a96e',
-    color: '#0a0a0f',
+    backgroundColor: '#111111',
+    color: '#ffffff',
     fontSize: '13px',
     fontWeight: '600',
     letterSpacing: '0.08em',
     padding: '13px 30px',
-    borderRadius: '100px',
     textDecoration: 'none',
     display: 'inline-block',
   },
   hr: {
-    borderColor: '#e5dfd5',
-    margin: '0 40px',
+    borderColor: '#eee8df',
+    margin: 0,
   },
   footer: {
     padding: '20px 40px 28px',

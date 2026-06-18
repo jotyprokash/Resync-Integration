@@ -51,24 +51,40 @@ app.post('/api/subscribe', async (req, res) => {
         from: fromEmail,
         to: email,
         reply_to: replyToEmail,
-        subject: "You're on the list ✦",
+        subject: `${siteName} waitlist confirmation`,
+        text: [
+          "Hello,",
+          "",
+          `Thanks for joining the ${siteName} waitlist.`,
+          "",
+          "We received your request and will let you know when access is available.",
+          "",
+          "No action is needed from you right now.",
+          "",
+          siteName,
+          siteUrl,
+        ].join("\n"),
         html: `
-          <div style="background:#f4f1eb;padding:40px 0;font-family:Arial,sans-serif">
-            <div style="max-width:560px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid #e5dfd5;background:#fff">
-              <div style="background:#0a0a0f;padding:24px 40px;text-align:center">
-                <p style="color:#c8a96e;font-size:13px;font-weight:700;letter-spacing:0.2em;margin:0">✦ ${siteName}</p>
+          <div style="background:#f6f4ef;padding:32px 0;font-family:Arial,sans-serif">
+            <div style="max-width:560px;margin:0 auto;border:1px solid #e7e1d8;background:#ffffff">
+              <div style="padding:24px 40px;border-bottom:1px solid #eee8df">
+                <p style="color:#111111;font-size:14px;font-weight:700;letter-spacing:0.16em;margin:0;text-transform:uppercase">${siteName}</p>
               </div>
-              <div style="background:#0a0a0f;padding:36px 40px 32px;text-align:center">
-                <h1 style="color:#f5f0e8;font-size:40px;font-family:Georgia,serif;font-weight:700;margin:0 0 10px">You're on the list.</h1>
-                <p style="color:rgba(245,240,232,0.55);font-size:15px;margin:0">Something big is coming — and you'll be the first to know.</p>
+              <div style="padding:36px 40px 10px">
+                <h1 style="color:#111111;font-size:28px;font-family:Georgia,serif;font-weight:700;line-height:1.2;margin:0 0 14px">You're on the waitlist.</h1>
+                <p style="color:#4d4944;font-size:15px;line-height:1.7;margin:0">Thanks for joining. We received your request and will let you know when access is available.</p>
               </div>
-              <div style="padding:32px 40px 8px">
-                <p style="color:#3a3530;font-size:15px;line-height:1.7;margin:0 0 14px">Hi there,</p>
-                <p style="color:#3a3530;font-size:15px;line-height:1.7;margin:0 0 14px">Thank you for subscribing! We're putting the final touches on our store and we can't wait to share it with you.</p>
-                <p style="color:#3a3530;font-size:15px;line-height:1.7;margin:0 0 14px">When we launch, you'll be among the very first to get access — along with any exclusive early-bird offers we have lined up.</p>
+              <div style="padding:14px 40px 8px">
+                <p style="color:#4d4944;font-size:15px;line-height:1.7;margin:0 0 14px">Hello,</p>
+                <p style="color:#4d4944;font-size:15px;line-height:1.7;margin:0 0 14px">No action is needed from you right now. We'll send the next update to this email address.</p>
+                <p style="color:#4d4944;font-size:15px;line-height:1.7;margin:0 0 14px">If you have any questions, you can reply directly to this email.</p>
               </div>
               <div style="padding:8px 40px 32px;text-align:center">
-                <a href="${siteUrl}" style="background:#c8a96e;color:#0a0a0f;font-size:13px;font-weight:700;padding:13px 30px;border-radius:100px;text-decoration:none;display:inline-block">Visit Our Website</a>
+                <a href="${siteUrl}" style="background:#111111;color:#ffffff;font-size:13px;font-weight:700;padding:13px 28px;text-decoration:none;display:inline-block">Visit website</a>
+              </div>
+              <div style="border-top:1px solid #eee8df;padding:20px 40px 28px">
+                <p style="color:#8a8580;font-size:12px;line-height:1.6;margin:0 0 4px">You received this email because you joined the waitlist at ${siteUrl}.</p>
+                <p style="color:#8a8580;font-size:12px;line-height:1.6;margin:0">© 2026 ${siteName}. All rights reserved.</p>
               </div>
             </div>
           </div>
