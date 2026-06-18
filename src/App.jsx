@@ -4,6 +4,8 @@ import styles from "./App.module.css";
 export default function App() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error | invalid
+  const siteName = import.meta.env.VITE_PUBLIC_SITE_NAME || "Something new";
+  const siteUrl = import.meta.env.VITE_PUBLIC_SITE_URL || "our website";
 
   async function handleSubscribe() {
     const trimmed = email.trim();
@@ -53,7 +55,7 @@ export default function App() {
       <div className={styles.noise} />
 
       <main className={styles.container}>
-        <span className={styles.eyebrow}>✦ ZeroOS is brewing</span>
+        <span className={styles.eyebrow}>✦ {siteName} is brewing</span>
 
         <h1 className={styles.headline}>
           Coming
@@ -62,7 +64,7 @@ export default function App() {
         </h1>
 
         <p className={styles.sub}>
-          We're crafting something extraordinary at zeroos.com.
+          We're crafting something extraordinary for {siteUrl}.
           <br />
           Be the first to know when we launch.
         </p>

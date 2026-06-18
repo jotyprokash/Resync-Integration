@@ -7,9 +7,13 @@ const supabase = createClient(
 );
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = "ZEROOS <hello@zeroos.co>";
-const replyToEmail = "hello@zeroos.co";
-const adminEmail = "hello@zeroos.co";
+const siteName = process.env.PUBLIC_SITE_NAME || "Launch Updates";
+const siteUrl = process.env.PUBLIC_SITE_URL || "https://example.com";
+const fromName = process.env.MAIL_FROM_NAME || siteName;
+const fromAddress = process.env.MAIL_FROM_EMAIL || "noreply@example.com";
+const fromEmail = `${fromName} <${fromAddress}>`;
+const replyToEmail = process.env.MAIL_REPLY_TO || fromAddress;
+const adminEmail = process.env.ADMIN_EMAIL || fromAddress;
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -46,7 +50,7 @@ export default async function handler(req, res) {
         <div style="background:#f4f1eb;padding:40px 0;font-family:Arial,sans-serif">
           <div style="max-width:560px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid #e5dfd5;background:#fff">
             <div style="background:#0a0a0f;padding:24px 40px;text-align:center">
-              <p style="color:#c8a96e;font-size:13px;font-weight:700;letter-spacing:0.2em;margin:0">✦ ZEROOS</p>
+              <p style="color:#c8a96e;font-size:13px;font-weight:700;letter-spacing:0.2em;margin:0">✦ ${siteName}</p>
             </div>
             <div style="background:#0a0a0f;padding:36px 40px 32px;text-align:center">
               <h1 style="color:#f5f0e8;font-size:40px;font-family:Georgia,serif;font-weight:700;margin:0 0 10px">You're on the list.</h1>
@@ -58,12 +62,12 @@ export default async function handler(req, res) {
               <p style="color:#3a3530;font-size:15px;line-height:1.7;margin:0 0 14px">When we launch, you'll be among the very first to get access — along with any exclusive early-bird offers we have lined up.</p>
             </div>
             <div style="padding:8px 40px 32px;text-align:center">
-              <a href="https://zeroos.com" style="background:#c8a96e;color:#0a0a0f;font-size:13px;font-weight:700;padding:13px 30px;border-radius:100px;text-decoration:none;display:inline-block">Visit Our Website</a>
+              <a href="${siteUrl}" style="background:#c8a96e;color:#0a0a0f;font-size:13px;font-weight:700;padding:13px 30px;border-radius:100px;text-decoration:none;display:inline-block">Visit Our Website</a>
             </div>
             <div style="height:1px;background:#e5dfd5;margin:0 40px"></div>
             <div style="padding:20px 40px 28px;text-align:center">
-              <p style="color:#aaa;font-size:12px;margin:0 0 4px">© 2026 ZeroOS. All rights reserved.</p>
-              <p style="color:#aaa;font-size:12px;margin:0">You received this because you signed up at zeroos.com</p>
+              <p style="color:#aaa;font-size:12px;margin:0 0 4px">© 2026 ${siteName}. All rights reserved.</p>
+              <p style="color:#aaa;font-size:12px;margin:0">You received this because you signed up at ${siteUrl}</p>
             </div>
           </div>
         </div>
@@ -73,9 +77,9 @@ export default async function handler(req, res) {
       from: fromEmail,
       to: adminEmail,
       reply_to: replyToEmail,
-      subject: "New ZEROOS waitlist signup",
+      subject: `New ${siteName} waitlist signup`,
       text: [
-        "New waitlist/contact form submission from zeroos.com",
+        `New waitlist/contact form submission from ${siteUrl}`,
         "",
         `Email: ${email}`,
         `Submitted at: ${new Date().toISOString()}`,

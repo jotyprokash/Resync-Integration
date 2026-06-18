@@ -14,7 +14,11 @@ import {
   Text,
 } from '@react-email/components'
 
-export function WelcomeEmail({ email = '' }) {
+export function WelcomeEmail({
+  email = '',
+  siteName = 'Launch Updates',
+  siteUrl = 'https://example.com',
+}) {
   return (
     <Html>
       <Head />
@@ -24,7 +28,7 @@ export function WelcomeEmail({ email = '' }) {
 
           {/* ── Dark header with logo ── */}
           <Section style={s.header}>
-            <Text style={s.logo}>✦ ZEROOS</Text>
+            <Text style={s.logo}>✦ {siteName}</Text>
           </Section>
 
           {/* ── Hero ── */}
@@ -50,7 +54,7 @@ export function WelcomeEmail({ email = '' }) {
 
           {/* ── CTA ── */}
           <Section style={s.ctaSection}>
-            <Button style={s.button} href="https://zeroos.com">
+            <Button style={s.button} href={siteUrl}>
               Visit Our Website
             </Button>
           </Section>
@@ -59,12 +63,12 @@ export function WelcomeEmail({ email = '' }) {
 
           {/* ── Footer ── */}
           <Section style={s.footer}>
-            <Text style={s.footerText}>© 2026 ZeroOS. All rights reserved.</Text>
+            <Text style={s.footerText}>© 2026 {siteName}. All rights reserved.</Text>
             <Text style={s.footerText}>
-              You received this because you signed up at zeroos.com
+              You received this because you signed up at {siteUrl}
             </Text>
             <Text style={s.footerText}>
-              <a href="https://zeroos.com/unsubscribe" style={s.link}>
+              <a href={`${siteUrl}/unsubscribe`} style={s.link}>
                 Unsubscribe
               </a>
             </Text>
