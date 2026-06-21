@@ -215,7 +215,20 @@ function Hero() {
           </button>
         </div>
 
-        {status !== 'success' ? (
+        {status === 'success' ? (
+          <div className="flex items-center gap-[9px] mt-5 text-sm text-gold font-medium">
+            <Check width="16" height="16" />
+            You're on the list — your early-access code is on its way.
+          </div>
+        ) : status === 'invalid' ? (
+          <p className="mt-3 text-[13.5px] text-red-400">
+            Please enter a valid email address.
+          </p>
+        ) : status === 'error' ? (
+          <p className="mt-3 text-[13.5px] text-red-400">
+            Something went wrong. Please try again.
+          </p>
+        ) : (
           <div className="flex gap-[34px] mt-5 flex-wrap">
             <span className="flex items-center gap-[9px] text-[13.5px] text-soft">
               <Mail width="15" height="15" />
@@ -225,11 +238,6 @@ function Hero() {
               <Flame width="15" height="15" />
               First 30 orders get 20% off.
             </span>
-          </div>
-        ) : (
-          <div className="flex items-center gap-[9px] mt-5 text-sm text-gold font-medium">
-            <Check width="16" height="16" />
-            You're on the list — your early-access code is on its way.
           </div>
         )}
       </div>
