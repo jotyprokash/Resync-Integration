@@ -1,4 +1,4 @@
-*, *::before, *::after {
+/* *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,4 +12,20 @@ body {
   background: #0a0a0f;
   font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
+} */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0b;
+}
+
+::placeholder {
+  color: #6b6b70;
 }
