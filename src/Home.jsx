@@ -126,18 +126,9 @@ function Header() {
 /* Hero (with early-access form)                                       */
 /* ------------------------------------------------------------------ */
 function Hero() {
-//   const [email, setEmail] = useState('');
-//   const [joined, setJoined] = useState(false);
-
-//   const join = () => {
-//     if (email.trim().length > 2) setJoined(true);
-//   };
-
 
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error | invalid
-//   const siteName = import.meta.env.VITE_PUBLIC_SITE_NAME || "Something new";
-//   const siteUrl = import.meta.env.VITE_PUBLIC_SITE_URL || "our website";
+  const [status, setStatus] = useState("idle"); 
 
   async function handleSubscribe() {
     const trimmed = email.trim();
