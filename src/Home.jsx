@@ -4,8 +4,8 @@ import zeroosCover from './asstes/zeroos_transparent.png';
 import tshirt1 from './asstes/zeroos_tshirt_1.png';
 import tshirt2 from './asstes/zeroos_tshirt_2.png';
 import tshirt3 from './asstes/zeroos_tshirt_3.png';
-import tshirt4 from './asstes/zeroos_tshirt_4.png';
-import tshirt5 from './asstes/zeroos_tshirt_5.png';
+import tshirt4 from './asstes/D32.png';
+import tshirt5 from './asstes/D51.png';
 
 /* ------------------------------------------------------------------ */
 /* Icons                                                               */
@@ -221,13 +221,13 @@ function Hero() {
           </p>
         ) : (
           <div className="flex gap-[34px] mt-5 flex-wrap">
-            <span className="flex items-center gap-[9px] text-[13.5px] text-soft">
+            {/* <span className="flex items-center gap-[9px] text-[13.5px] text-soft">
               <Mail width="15" height="15" />
               Join early access and get 15% off.
-            </span>
+            </span> */}
             <span className="flex items-center gap-[9px] text-[13.5px] text-gold">
               <Flame width="15" height="15" />
-              First 30 orders get 20% off.
+              Early access benefit: only for people who join the list.
             </span>
           </div>
         )}
@@ -283,9 +283,9 @@ function FeatureBar() {
   return (
     <section className="border-b border-line bg-panel">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 py-[24px] md:py-[30px] grid grid-cols-2 md:grid-cols-4 gap-y-4 md:gap-y-0">
-        <Feature icon={<Rocket width="26" height="26" />} title="FIRST 30 ORDERS">GET 20% OFF.</Feature>
+        <Feature icon={<Rocket width="26" height="26" />} title="FIRST JOIN">GET BENEFITS</Feature>
         <Feature icon={<Tee width="26" height="26" />} title="PREMIUM QUALITY" border>230 GSM HEAVYWEIGHT COTTON</Feature>
-        <Feature icon={<Globe width="26" height="26" />} title="LIMITED FIRST DROP" border>UK LAUNCH</Feature>
+        <Feature icon={<Globe width="26" height="26" />} title="WORLDWIDE SHIPPING" border>UK & BANGLADESH FIRST LAUNCH</Feature>
         <Feature icon={<Shield width="26" height="26" />} title="TRUSTED QUALITY" border>
           BUILT FOR COMFORT, DURABILITY
           <br />
@@ -488,8 +488,8 @@ function BottomFeatures() {
         <div className="flex items-start gap-[14px]">
           <span className="shrink-0"><UKFlag width="26" height="26" /></span>
           <div>
-            <div className="font-cond font-semibold text-sm tracking-[0.6px] text-[#eceae6]">LIMITED FIRST DROP</div>
-            <div className="text-[13px] text-muted mt-1">Exclusively launching in the UK.</div>
+            <div className="font-cond font-semibold text-sm tracking-[0.6px] text-[#eceae6]">WORLDWIDE SHIPPING</div>
+            <div className="text-[13px] text-muted mt-1">Exclusively launching in the UK & BANGLADESH.</div>
           </div>
         </div>
         <div className="flex items-start gap-[14px]">
