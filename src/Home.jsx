@@ -342,28 +342,33 @@ const DESIGNS = [
   { src: tshirt4, alt: 'Design 4' },
   { src: tshirt5, alt: 'Design 5' },
 ];
-const PER_VIEW = 3;
 const GAP = 18;
+
+function getPerView() {
+  if (window.innerWidth < 640) return 1;
+  if (window.innerWidth < 1024) return 2;
+  return 3;
+}
 
 function DesignSlider() {
   const [slide, setSlide] = useState(0);
-  const [step, setStep] = useState(0);
+  const [itemWidth, setItemWidth] = useState(0);
+  const [perView, setPerView] = useState(getPerView);
   const [lightbox, setLightbox] = useState(null);
   const viewportRef = useRef(null);
-  const maxSlide = Math.max(0, DESIGNS.length - PER_VIEW);
+  const maxSlide = Math.max(0, DESIGNS.length - perView);
 
   useEffect(() => {
     const measure = () => {
+      const pv = getPerView();
+      setPerView(pv);
       const vp = viewportRef.current;
       if (!vp) return;
-      const item = vp.querySelector('[data-slide-item]');
-      if (item) {
-        const w = item.getBoundingClientRect().width;
-        if (w) setStep(w + GAP);
-      }
+      const w = vp.clientWidth;
+      if (w) setItemWidth(Math.floor((w - GAP * (pv - 1)) / pv));
     };
     measure();
-    const t = setTimeout(measure, 250);
+    const t = setTimeout(measure, 150);
     window.addEventListener('resize', measure);
     return () => {
       window.removeEventListener('resize', measure);
@@ -371,6 +376,11 @@ function DesignSlider() {
     };
   }, []);
 
+  useEffect(() => {
+    setSlide((s) => Math.min(s, Math.max(0, DESIGNS.length - perView)));
+  }, [perView]);
+
+  const step = itemWidth > 0 ? itemWidth + GAP : 218;
   const clamped = Math.min(slide, maxSlide);
   const prev = () => setSlide((s) => Math.max(0, s - 1));
   const next = () => setSlide((s) => Math.min(maxSlide, s + 1));
@@ -390,7 +400,8 @@ function DesignSlider() {
                 src={d.src}
                 alt={d.alt}
                 onClick={() => setLightbox(d)}
-                className="flex-[0_0_200px] h-[300px] object-cover rounded-[6px] cursor-pointer hover:opacity-90 transition-opacity"
+                style={{ width: itemWidth > 0 ? itemWidth : 200, flexShrink: 0 }}
+                className="h-[300px] object-cover rounded-[6px] cursor-pointer hover:opacity-90 transition-opacity"
               />
             ))}
           </div>
